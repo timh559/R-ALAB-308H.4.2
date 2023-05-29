@@ -48,3 +48,10 @@ wolfy[3] = "Gotham City";
 dart.push("Hawkins");
 wolfy[0] = "Gameboy";
 console.log(plantee, wolfy, dart);
+////////////////////////////////
+// Yell at the Ninja Turtles
+////////////////////////////////
+const turtles = ["Donatello", "Leonardo", "Raphael", "Michaelangelo"];
+for(let turtle of turtles) {
+    console.log(turtle.toUpperCase());
+}
