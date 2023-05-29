@@ -55,3 +55,32 @@ const turtles = ["Donatello", "Leonardo", "Raphael", "Michaelangelo"];
 for(let turtle of turtles) {
     console.log(turtle.toUpperCase());
 }
+////////////////////////////////
+// Methods Revisted
+////////////////////////////////
+const favMovies = ['Jaws', 'The Fellowship of the Ring', 'Howl\'s Moving Castle', 'Django Unchained', 'Cloud Atlas', 'The Usual Suspects', 'Toy Story', 'Conan the Barbarian', 'Titanic', 'Harry Potter', 'Fried Green Tomatoes', 'Volver', 'Oculus', 'Seven', 'Black Panther', 'Harry Potter', 'Imitation of Life', 'Snatch', 'Fast and Furious'];
+console.log("Index of Titanic is:"+favMovies.indexOf("Titanic"));
+favMovies.sort();
+//sorts array by first character
+favMovies.pop();
+favMovies.push("Guardians of the Galaxy");
+favMovies.reverse();
+console.log(favMovies);
+let removed = favMovies.shift();
+//shift removes from beginning of array
+console.log(removed);
+console.log(favMovies);
+favMovies.unshift(removed);
+//unshift adds to beginning of array
+console.log(favMovies);
+removed = favMovies.splice(favMovies.indexOf("Django Unchained"), 1, "Avatar");
+// splice removes a specific section of the array and returns the removed portion in its own array
+console.log(removed);
+console.log(favMovies);
+removed = favMovies.splice(favMovies.length/2);
+console.log(removed);
+console.log(favMovies);
+console.log(favMovies.indexOf("Fast and Furious"));
+// index of element not in array returns -1
+console.log("===================================")
+/////////////////////////////////
