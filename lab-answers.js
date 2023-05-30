@@ -110,22 +110,7 @@ const whereIsWaldo = [
   ["Petunia", ["Baked Goods", "Waldo"]],
 ];
 console.log(whereIsWaldo);
-console.log(whereIsWaldo.indexOf("Eggbert"));
-console.log(whereIsWaldo.includes("Waldo"));
-/*
-function whereIs(array) {
-    if(array.includes("Waldo")){
-        return array.indexOf("Waldo");
-    }
-    for (let i = 0; i < array.length; i++) {
-        if(Array.isArray(array[i])){
-            whereIs(array[i]);
-        }
-    }
-}
-console.log(whereIs(whereIsWaldo));
-*/
-whereIsWaldo.splice(whereIsWaldo.indexOf("Eggbert"),1);
+/*whereIsWaldo.splice(whereIsWaldo.indexOf("Eggbert"),1);
 console.log(whereIsWaldo);
 result = [];
 if(whereIsWaldo.includes("Neff")){
@@ -156,6 +141,28 @@ else {
 console.log(result);
 whereIsWaldo[result[0]][result[1]]= "No One";
 console.log(whereIsWaldo);
+*/
+
+////////////////////////////////////////////////////////////////////////
+function locateAndChange(arr, target, newValue) {
+    for (let i = 0; i < arr.length; i++) {
+      if (Array.isArray(arr[i])) {
+        // Recursive call for nested arrays
+        if (locateAndChange(arr[i], target, newValue)) {
+          return true; // Element found and changed
+        }
+      } else if (arr[i] === target) {
+        arr[i] = newValue;
+        return true; // Element found and changed
+      }
+    }
+    return false; // Element not found
+  }
+  let change = locateAndChange(whereIsWaldo,"Neff", "No One");
+  console.log("Did it change? ",change);
+  console.log(whereIsWaldo);
+////////////////////////////////////////////////////////////////
+
 result=[];
 if(whereIsWaldo.includes("Waldo")){
     result.push(whereIsWaldo.indexOf("Waldo"));
@@ -182,5 +189,48 @@ else {
         }
     }
 }
-console.log(whereIsWaldo[result[0]][result[1]][result[2]]);
+console.log('Here is: ',whereIsWaldo[result[0]][result[1]][result[2]]);
+console.log(result);
 
+////////////////////////////////////////////////////////////////
+function locateAndReturnIndex(arr, target) {
+    for (let i = 0; i < arr.length; i++) {
+      if (Array.isArray(arr[i])) {
+        // Recursive call for nested arrays
+        const result = locateAndReturnIndex(arr[i], target);
+        if (result !== null) {
+          return [i, ...result]; // Add current index to the result path
+        }
+      } else if (arr[i] === target) {
+        return [i]; // Element found, return its index
+      }
+    }
+    return null; // Element not found
+  }
+indexPath = locateAndReturnIndex(whereIsWaldo, "Waldo");
+let element = whereIsWaldo;
+for (let i = 0; i < indexPath.length; i++) {
+    const index = indexPath[i];
+    element = element[index];
+  }
+  
+  console.log('Found: ', element);
+  console.log(indexPath);
+  console.log("================================================");
+////////////////////////////////////////////////////////////////
+// Excited Kitten
+////////////////////////////////////////////////////////////////
+for(let i = 1; i <=20; i++) {
+  let kittyTalk = ["Love me, pet me! HSSSSSS!","...human... why you taking pictures of me...?","...the catnip made me do it...","...why does the red dot always get away...?"]
+  let meow = Math.ceil(Math.random() * 3);
+  if (i % 2 == 0) {
+    console.log(kittyTalk[meow]);
+    console.log("==========================================");
+  }
+  else {
+    console.log(kittyTalk[0]);
+    console.log("==========================================");
+  }
+}
+console.log("That's an excited kitten");
+console.log("================================================");
